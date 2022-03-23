@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Menu() {
   return (
@@ -12,6 +13,12 @@ function Menu() {
             <a className="nav-link active" href="/">
               <span data-feather="home"></span>
               Dashboard
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link active" href="/users">
+              <span data-feather="home"></span>
+              Users
             </a>
           </li>
         </ul>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Login.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -24,12 +24,12 @@ function Register() {
       password_confirm: passswordConfirm,
     });
 
-    if (redirect) {
-      navigate("/login");
-    }
-
     setRedirect(true);
   };
+
+  if (redirect) {
+    return <Navigate to={"/login"} />;
+  }
 
   return (
     <main className="form-signin">

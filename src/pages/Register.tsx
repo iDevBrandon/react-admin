@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../Login.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -8,11 +9,14 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passswordConfirm, setPassswordConfirm] = useState("");
+  const [redirect, setRedirect] = useState(false);
+
+  let navigate = useNavigate();
 
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
-    const response = await axios.post("http://localhost:8000/api/register", {
+    await axios.post("http://localhost:8000/api/register", {
       first_name: firstName,
       last_name: lastName,
       email: email,
@@ -20,7 +24,11 @@ function Register() {
       password_confirm: passswordConfirm,
     });
 
-    console.log(response);
+    if (redirect) {
+      navigate("/login");
+    }
+
+    setRedirect(true);
   };
 
   return (

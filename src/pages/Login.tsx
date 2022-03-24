@@ -1,34 +1,28 @@
 import axios from "axios";
 import React, { SyntheticEvent, useState } from "react";
-import { Navigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  const onSubmit = async (e: SyntheticEvent) => {
+  const submit = async (e: SyntheticEvent) => {
     e.preventDefault();
 
-    await axios.post(
-      "http://localhost:8000/api/login",
-      {
-        email,
-        password,
-      },
-      { withCredentials: true }
-    );
+    await axios.post("login", {
+      email,
+      password,
+    });
 
     setRedirect(true);
   };
 
   if (redirect) {
-    return <Navigate to={"/"} />;
   }
 
   return (
     <main className="form-signin">
-      <form onSubmit={onSubmit}>
+      <form onSubmit={submit}>
         <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
 
         <input

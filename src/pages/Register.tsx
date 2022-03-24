@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../Login.css";
 import axios from "axios";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -11,12 +11,10 @@ function Register() {
   const [passswordConfirm, setPassswordConfirm] = useState("");
   const [redirect, setRedirect] = useState(false);
 
-  let navigate = useNavigate();
-
   const onSubmit = async (e: any) => {
     e.preventDefault();
 
-    await axios.post("http://localhost:8000/api/register", {
+    await axios.post("register", {
       first_name: firstName,
       last_name: lastName,
       email: email,

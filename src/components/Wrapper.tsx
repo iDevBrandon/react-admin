@@ -14,7 +14,7 @@ function Wrapper(props: any) {
             {props.children}
           </main>
         </div>
-      </div>
+      </div> 
     </>
   );
 }

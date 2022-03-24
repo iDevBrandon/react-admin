@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../Login.css";
+import axios from "axios";
 
 function Register() {
   const [firstName, setFirstName] = useState("");
@@ -8,15 +9,18 @@ function Register() {
   const [password, setPassword] = useState("");
   const [passswordConfirm, setPassswordConfirm] = useState("");
 
-  const onSubmit = (e: any) => {
+  const onSubmit = async (e: any) => {
     e.preventDefault();
-    console.log({
-      firstName,
-      lastName,
-      email,
-      password,
-      passswordConfirm,
+
+    const response = await axios.post("http://localhost:8000/api/register", {
+      first_name: firstName,
+      last_name: lastName,
+      email: email,
+      password: password,
+      password_confirm: passswordConfirm,
     });
+
+    console.log(response);
   };
 
   return (

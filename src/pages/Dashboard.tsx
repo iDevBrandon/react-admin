@@ -1,7 +1,8 @@
 import React from "react";
+import Wrapper from "../components/Wrapper";
 
 function Dashboard() {
-  return <div>Dashboard</div>;
+  return <Wrapper>Dashboard</Wrapper>;
 }
 
 export default Dashboard;
